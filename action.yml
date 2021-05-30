@@ -1,0 +1,17 @@
+name: 'Shoutrrr action'
+description: 'Notifications using https://containrrr.dev/shoutrrr'
+inputs:
+  url:
+    description: 'The Shoutrrr notification url'
+    required: true
+  message:
+    description: 'The message to send to the notification url'
+    required: true
+  title:
+    description: 'The title used for services that support it'
+    required: false
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args: [ "send", "-u", inputs.url, "-m", inputs.message, "-t", inputs.title ]
