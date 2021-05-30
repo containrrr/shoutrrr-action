@@ -1,5 +1,8 @@
 name: 'Shoutrrr action'
 description: 'Notifications using https://containrrr.dev/shoutrrr'
+branding:
+  icon: send
+  color: purple
 inputs:
   url:
     description: 'The Shoutrrr notification url'
