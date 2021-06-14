@@ -17,4 +17,4 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args: [ "send", "-u", inputs.url, "-m", inputs.message, "-t", inputs.title ]
+  args: [ "send", "-u", ${{ inputs.url }}, "-m", ${{ inputs.message }}, "-t", ${{ inputs.title }} ]
