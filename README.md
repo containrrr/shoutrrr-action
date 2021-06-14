@@ -24,7 +24,7 @@ jobs:
         with:
           url: ${{ secrets.SHOUTRRR_URL }}
           title: Deployed ${{ github.sha }}
-          message: See changes at ${{ github.event.commpare }}.
+          message: See changes at ${{ github.event.compare }}.
 ```
 
 The `url` is the Shoutrrr service URL as described in the [service
