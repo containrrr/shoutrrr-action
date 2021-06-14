@@ -1,4 +1,4 @@
-# Notifications using [Shoutrrr](https://containrrr.dev/shoutrrr) in GitHub Actions
+# Notifications using Shoutrrr in GitHub Actions
 
 With this action, you can send notifications using
 [Shoutrrr](https://containrrr.dev/shoutrrr) from your GitHub Actions
