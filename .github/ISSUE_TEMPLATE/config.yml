@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Ask a question or get support
+    url: https://github.com/containrrr/shoutrrr-action/discussions
+    about: Please use the discussions forum
+  - name: View documentation
+    url: https://github.com/marketplace/actions/shoutrrr-action
+    about: Visit the main site, and please come back if you still have questions
+  - name: Upstream Shoutrrr issue and not related to the GitHub Action
+    url: https://github.com/containrrr/shoutrrr
+    about: If you the issue is actually in the upstream Shoutrrr please visit the Shoutrrr repository
+  - name: Do you need inspiration for your GitHub Action workflows?
+    url: https://github.com/search?q=%22containrrr%2Fshoutrrr-action%22+path%3A.github%2Fworkflows%2F&type=code
+    about: Search all of GitHub for uses of the action in repositories
