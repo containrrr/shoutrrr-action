@@ -34,7 +34,10 @@ jobs:
           git push origin ${{ steps.major-version.outputs.tag }} --force
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date --iso-8601=seconds)"
+        run: echo "::set-output name=date::$(date --iso-8601)"
+      - name: Build full ChangeLog
+        if: ${{ steps.version.outputs.new_tag }} != ''
+        run: npx conventional-changelog-cli --release-count=0 --preset=eslint --outfile="${{ runner.temp }}/FullChangeLog.md"
       - name: Create/update release ${{ steps.major-version.outputs.tag }}
         if: ${{ steps.version.outputs.new_tag }} != ""
         uses: ncipollo/release-action@v1
@@ -43,7 +46,10 @@ jobs:
           allowUpdates: true
           tag: ${{ steps.major-version.outputs.tag }}
           name: ${{ steps.version.outputs.new_tag }} (${{ steps.date.outputs.date }})
-          omitBody: true
+          bodyFile: ${{ runner.temp }}/FullChangeLog.md
+      - name: Build ChangeLog
+        if: ${{ steps.version.outputs.new_tag }} != ''
+        run: npx conventional-changelog-cli --release-count=2 --outfile="${{ runner.temp }}/ChangeLog.md"
       - name: Create release ${{ steps.version.outputs.new_tag }}
         if: ${{ steps.version.outputs.new_tag }} != ""
         uses: ncipollo/release-action@v1
@@ -51,4 +57,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.version.outputs.new_tag }}
           name: Release ${{ steps.version.outputs.new_tag }}
-          omitBody: true
+          bodyFile: ${{ runner.temp }}/ChangeLog.md
