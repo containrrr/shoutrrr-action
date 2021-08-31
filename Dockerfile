@@ -1,1 +1,1 @@
-FROM containrrr/shoutrrr:0.5.0
+FROM containrrr/shoutrrr:0.5.1
