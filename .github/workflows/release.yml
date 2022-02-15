@@ -61,5 +61,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.version.outputs.new_tag }}
-          name: Release ${{ steps.version.outputs.new_tag }} (${{ steps.shoutrrr.outputs.version }})
+          name: ${{ steps.version.outputs.new_tag }} (${{ steps.shoutrrr.outputs.version }})
           bodyFile: ${{ runner.temp }}/ChangeLog.md
