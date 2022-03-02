@@ -6,7 +6,7 @@ jobs:
     name: dockerfile
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run hadolint
         uses: hadolint/hadolint-action@v1.6.0
 
@@ -14,6 +14,6 @@ jobs:
     name: markdown
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Run markdownlint
       uses: actionshub/markdownlint@2.0.2
