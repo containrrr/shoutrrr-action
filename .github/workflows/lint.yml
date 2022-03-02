@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run hadolint
-        uses: brpaz/hadolint-action@v1.5.0
+        uses: hadolint/hadolint-action@v1.6.0
 
   markdownlint:
     name: markdown
