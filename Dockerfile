@@ -1,1 +1,1 @@
-FROM docker.io/containrrr/shoutrrr:0.5.2
+FROM docker.io/containrrr/shoutrrr:0.5.3
