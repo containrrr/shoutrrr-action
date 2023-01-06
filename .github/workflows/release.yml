@@ -20,6 +20,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
           DEFAULT_BUMP: patch
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
       - name: Major version tag
         id: major-version
         if: ${{ steps.version.outputs.new_tag }} != ""
