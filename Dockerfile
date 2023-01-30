@@ -1,1 +1,1 @@
-FROM docker.io/containrrr/shoutrrr:0.7.0@sha256:3df76516c625dd1eda12daacdb748f5481c9cddb936c6f536d05621ddd8f87a7
+FROM docker.io/containrrr/shoutrrr:0.7.1@sha256:cc0969e1cfc7d5dc96da707d83bae82d973b2279a080a1c177c6d05aa806c820
