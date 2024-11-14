@@ -36,6 +36,6 @@ parts of the URL in a GitHub secret.
 Not all services support the `title` option. It's optional and you can
 leave it out.
 
-> [!NOTICE]
+> [!NOTE]
 > This action is only supported on Linux runners.
-> See https://docs.github.com/en/actions/sharing-automations/creating-actions/about-custom-actions#types-of-actions
+> See <https://docs.github.com/en/actions/sharing-automations/creating-actions/about-custom-actions#types-of-actions>
