@@ -41,7 +41,7 @@ jobs:
       - name: Get shoutrrr version
         if: ${{ steps.version.outputs.new_tag }}
         id: shoutrrr
-        run: echo "name=version::$(docker run --rm "$(docker build --quiet - < Dockerfile)" --version)" >> "$GITHUB_STATE"
+        run: echo "name=version::$(docker build --iidfile ${{ runner.temp }}/iidfile - < Dockerfile 2> /dev/null  && docker run --rm "$(cat ${{ runner.temp }}/iidfile)" --version)" >> "$GITHUB_STATE"
       - name: Build full ChangeLog
         if: ${{ steps.version.outputs.new_tag }}
         run: npx conventional-changelog-cli --release-count=0 --preset=eslint --outfile="${{ runner.temp }}/FullChangeLog.md"
