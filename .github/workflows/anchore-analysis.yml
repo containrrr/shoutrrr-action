@@ -1,10 +1,13 @@
+---
 name: Anchore Container Scan
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
   schedule:
     - cron: '17 7 * * 5'
 
@@ -16,17 +19,17 @@ jobs:
   Anchore-Build-Scan:
     runs-on: ubuntu-24.04
     steps:
-    - name: Checkout the code
-      uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag localbuild/testimage:latest
-    - name: Run the Anchore scan action itself with GitHub Advanced Security code scanning integration enabled
-      uses: anchore/scan-action@v6
-      id: anchore_scan
-      with:
-        image: "localbuild/testimage:latest"
-        fail-build: false
-    - name: Upload Anchore Scan Report
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: ${{ steps.anchore_scan.outputs.sarif }}
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag localbuild/testimage:latest
+      - name: Run the Anchore scan action itself with GitHub Advanced Security code scanning integration enabled
+        uses: anchore/scan-action@v6
+        id: anchore_scan
+        with:
+          image: "localbuild/testimage:latest"
+          fail-build: false
+      - name: Upload Anchore Scan Report
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: ${{ steps.anchore_scan.outputs.sarif }}
