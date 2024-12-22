@@ -27,3 +27,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: reviewdog/action-actionlint@v1
+
+  yamllint:
+    name: Yamllint
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Yamllint
+        uses: frenck/action-yamllint@v1.5.0
+        with:
+          strict: true
