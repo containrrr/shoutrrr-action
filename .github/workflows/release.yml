@@ -23,29 +23,29 @@ jobs:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
       - name: Major version tag
         id: major-version
-        if: ${{ steps.version.outputs.new_tag }} != ""
+        if: ${{ steps.version.outputs.new_tag }}
         uses: actions/github-script@v7
         with:
           script: |
             core.setOutput('tag', '${{ steps.version.outputs.new_tag }}'.split('.')[0])
       - name: Tag ${{ steps.major-version.outputs.tag }}
-        if: ${{ steps.version.outputs.new_tag }} != ""
+        if: ${{ steps.version.outputs.new_tag }}
         run: |
           git tag --force ${{ steps.major-version.outputs.tag }}
           git push origin ${{ steps.major-version.outputs.tag }} --force
       - name: Get current date
-        if: ${{ steps.version.outputs.new_tag }} != ""
+        if: ${{ steps.version.outputs.new_tag }}
         id: date
-        run: echo "::set-output name=date::$(date --iso-8601)"
+        run: echo "name=date::$(date --iso-8601)" >> "$GITHUB_STATE"
       - name: Get shoutrrr version
-        if: ${{ steps.version.outputs.new_tag }} != ""
+        if: ${{ steps.version.outputs.new_tag }}
         id: shoutrrr
-        run: echo "::set-output name=version::$(docker run --rm $(docker build --quiet - < Dockerfile) --version)"
+        run: echo "name=version::$(docker run --rm "$(docker build --quiet - < Dockerfile)" --version)" >> "$GITHUB_STATE"
       - name: Build full ChangeLog
-        if: ${{ steps.version.outputs.new_tag }} != ''
+        if: ${{ steps.version.outputs.new_tag }}
         run: npx conventional-changelog-cli --release-count=0 --preset=eslint --outfile="${{ runner.temp }}/FullChangeLog.md"
       - name: Create/update release ${{ steps.major-version.outputs.tag }}
-        if: ${{ steps.version.outputs.new_tag }} != ""
+        if: ${{ steps.version.outputs.new_tag }}
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -54,10 +54,10 @@ jobs:
           name: ${{ steps.version.outputs.new_tag }} (${{ steps.date.outputs.date }} / ${{ steps.shoutrrr.outputs.version }})
           bodyFile: ${{ runner.temp }}/FullChangeLog.md
       - name: Build ChangeLog
-        if: ${{ steps.version.outputs.new_tag }} != ''
+        if: ${{ steps.version.outputs.new_tag }}
         run: npx conventional-changelog-cli --release-count=2 --outfile="${{ runner.temp }}/ChangeLog.md"
       - name: Create release ${{ steps.version.outputs.new_tag }}
-        if: ${{ steps.version.outputs.new_tag }} != ""
+        if: ${{ steps.version.outputs.new_tag }}
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
