@@ -37,11 +37,11 @@ jobs:
       - name: Get current date
         if: ${{ steps.version.outputs.new_tag }}
         id: date
-        run: echo "date=$(date --iso-8601)" >> "$GITHUB_STATE"
+        run: echo "date=$(date --iso-8601)" >> "$GITHUB_OUTPUT"
       - name: Get shoutrrr version
         if: ${{ steps.version.outputs.new_tag }}
         id: shoutrrr
-        run: echo "version=$(docker build --iidfile ${{ runner.temp }}/iidfile - < Dockerfile 2> /dev/null  && docker run --rm "$(cat ${{ runner.temp }}/iidfile)" --version)" >> "$GITHUB_STATE"
+        run: echo "version=$(docker build --iidfile ${{ runner.temp }}/iidfile - < Dockerfile 2> /dev/null  && docker run --rm "$(cat ${{ runner.temp }}/iidfile)" --version)" >> "$GITHUB_OUTPUT"
       - name: Build full ChangeLog
         if: ${{ steps.version.outputs.new_tag }}
         run: npx conventional-changelog-cli --release-count=0 --preset=eslint --outfile="${{ runner.temp }}/FullChangeLog.md"
