@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag localbuild/testimage:latest
       - name: Run the Anchore scan action itself with GitHub Advanced Security code scanning integration enabled
