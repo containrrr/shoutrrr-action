@@ -30,6 +30,6 @@ jobs:
           image: "localbuild/testimage:latest"
           fail-build: false
       - name: Upload Anchore Scan Report
-        uses: github/codeql-action/upload-sarif@v4.37.5
+        uses: github/codeql-action/upload-sarif@v4.37.9
         with:
           sarif_file: ${{ steps.anchore_scan.outputs.sarif }}
