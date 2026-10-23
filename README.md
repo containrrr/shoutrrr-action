@@ -29,7 +29,7 @@ jobs:
 
 The `url` is the Shoutrrr service URL as described in the [service
 overview](https://containrrr.dev/shoutrrr/services/overview/). Service
-URLs usually contains tokens or other information you should keep
+URLs usually contain tokens or other information you should keep
 confidential, so make sure you store the URL or at least the secret
 parts of the URL in a GitHub secret.
 
